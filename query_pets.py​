@@ -1,3 +1,18 @@
+import sqlite3 as lite
+
+con = lite.connect('pets.db')
+
+with con:
+    user_id = input("User ID?")
+    
+    cursor = con.cursor()
+    
+    cursor.execute(f"SELECT person.first_name, person.last_name, person.age FROM person WHERE id = {user_id}")
+    
+    info = cursor.fetchall()
+    
+    print(f"Info: {info}")
+    
 
 if __name__ == "__main__":
     pass
